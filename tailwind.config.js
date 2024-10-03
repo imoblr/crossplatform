@@ -6,10 +6,32 @@ module.exports = {
   content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
   presets: [require('nativewind/preset')],
   theme: {
+    borderRadius: {
+      'none': '0',
+      'xs': '0.18rem',
+      'sm': '0.36rem',
+      DEFAULT: '0.48rem',
+      'md': '0.48rem',
+      'lg': '0.64rem',
+      'xl': '1rem',
+      'xxl': '1.4rem', 
+      'full': '9999px',
+    },
     extend: {
       colors: {
         border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
+        input: {
+          light: '#FF0000',
+          dark: 'hsl(var(--input-dark))',
+          DEFAULT: '#FFAA00',
+          focus: 'hsl(var(--input-focus))',
+          disabled: 'hsl(var(--input-disabled))',
+          error: 'hsl(var(--input-error))',
+          success: 'hsl(var(--input-success))',
+          warning: 'hsl(var(--input-warning))',
+          background: 'hsl(var(--input-background))',
+          foreground: 'hsl(var(--input-foreground))',
+        },
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',

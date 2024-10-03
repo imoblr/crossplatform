@@ -2,7 +2,10 @@ import "@/global.css";
 
 import { SessionProvider, useSession } from "@/context/SessionContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { type Theme, ThemeProvider } from "@react-navigation/native";
+import {
+	type Theme,
+	ThemeProvider as ReactNativeThemeProvider,
+} from "@react-navigation/native";
 import { SplashScreen, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import * as React from "react";
@@ -12,6 +15,7 @@ import { useColorScheme } from "@/lib/useColorScheme";
 import { PortalHost } from "@rn-primitives/portal";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { setAndroidNavigationBar } from "@/lib/android-navigation-bar";
+import { AppThemesProvider } from "@/theme";
 
 const LIGHT_THEME: Theme = {
 	dark: false,
@@ -65,20 +69,24 @@ export default function RootLayout() {
 	}
 
 	return (
-		<ThemeProvider value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}>
-			<SessionProvider>
-				<StatusBar style={isDarkColorScheme ? "light" : "dark"} />
-				<Stack>
-					<Stack.Screen
-						name="index"
-						options={{
-							title: "Starter Base",
-							headerRight: () => <ThemeToggle />,
-						}}
-					/>
-				</Stack>
-				<PortalHost />
-			</SessionProvider>
-		</ThemeProvider>
+		<ReactNativeThemeProvider
+			value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}
+		>
+			<AppThemesProvider name="brand">
+				<SessionProvider>
+					<StatusBar style={isDarkColorScheme ? "light" : "dark"} />
+					<Stack>
+						<Stack.Screen
+							name="index"
+							options={{
+								title: "Starter Base",
+								headerRight: () => <ThemeToggle />,
+							}}
+						/>
+					</Stack>
+					<PortalHost />
+				</SessionProvider>
+			</AppThemesProvider>
+		</ReactNativeThemeProvider>
 	);
 }
