@@ -11,5 +11,5 @@ export const AppThemesProvider = (props: {
 
 	const themeStyle: ViewStyle = themes[props.name][colorScheme || "light"];
 
-	return <View style={themeStyle}>{props.children}</View>;
+	return <View style={{ flex: 1, ...themeStyle }}>{props.children}</View>;
 };

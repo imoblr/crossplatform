@@ -6,7 +6,7 @@ import {
 	type Theme,
 	ThemeProvider as ReactNativeThemeProvider,
 } from "@react-navigation/native";
-import { SplashScreen, Stack } from "expo-router";
+import { Slot, SplashScreen, Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import * as React from "react";
 import { Platform } from "react-native";
@@ -74,16 +74,7 @@ export default function RootLayout() {
 		>
 			<AppThemesProvider name="brand">
 				<SessionProvider>
-					<StatusBar style={isDarkColorScheme ? "light" : "dark"} />
-					<Stack>
-						<Stack.Screen
-							name="index"
-							options={{
-								title: "Starter Base",
-								headerRight: () => <ThemeToggle />,
-							}}
-						/>
-					</Stack>
+					<Slot />
 					<PortalHost />
 				</SessionProvider>
 			</AppThemesProvider>
