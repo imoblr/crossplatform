@@ -1,5 +1,5 @@
 import { vars } from "nativewind";
-import { slate } from "../colors/slate";
+import { slate, brand as brandColor } from "../colors";
 
 export const brand = {
   'light': vars({
