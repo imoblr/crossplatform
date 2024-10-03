@@ -1,8 +1,9 @@
 import { vars } from "nativewind";
+import { slate } from "../colors/slate";
 
 export const brand = {
   'light': vars({
-    '--color-input': 'red',
+    '--color-input': slate['8'],
     '--color-primary': 'red',
     '--color-secondary': 'green'
   }),

@@ -1,4 +1,5 @@
 const { hairlineWidth } = require('nativewind/theme');
+const { colors } = require('./theme/colors');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -6,11 +7,14 @@ module.exports = {
   content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
   presets: [require('nativewind/preset')],
   theme: {
+    colors: {
+      ...colors,
+    },
     borderRadius: {
       'none': '0',
-      'xs': '0.18rem',
-      'sm': '0.36rem',
-      DEFAULT: '0.48rem',
+      'xs': '0.16rem',
+      'sm': '0.32rem',
+      DEFAULT: '0.42rem',
       'md': '0.48rem',
       'lg': '0.64rem',
       'xl': '1rem',
