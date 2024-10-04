@@ -148,7 +148,7 @@ export default function Screen() {
 								exiting={FadeOutDown}
 								className="w-11 items-center"
 							>
-								<Text className="font-bold text-sky-600 text-sm">
+								<Text className="font-bold text-muted-foreground text-sm">
 									{progress}%
 								</Text>
 							</Animated.View>
@@ -157,7 +157,7 @@ export default function Screen() {
 					<Progress
 						value={progress}
 						className="h-2"
-						indicatorClassName="bg-sky-600"
+						indicatorClassName="bg-primary"
 					/>
 					<View />
 					<Form {...form}>
