@@ -24,9 +24,9 @@ module.exports = {
     extend: {
       boxShadow: {
         DEFAULT: '0 2px 4px -2px rgba(16, 24, 40, 0.06), 0 4px 8px -2px rgba(16, 24, 40, 0.1)',
-        'xs': '0 1px 2px 0 rgba(16, 24, 40, 0.2)',
-        'sm': '0 1px 2px 0 rgba(16, 24, 40, 0.25), 0 1px 3px 0 rgba(16, 24, 40, 0.5)',
-        'md': '0 2px 4px -2px rgba(16, 24, 40, 0.06), 0 4px 8px -2px rgba(16, 24, 40, 0.1)',
+        'xs': '0 1px 2px 0 rgba(16, 24, 40, 0.1)',
+        'sm': '0 1px 2px 0 rgba(16, 24, 40, 0.12), 0 1px 3px 0 rgba(16, 24, 40, 0.20)',
+        'md': '0 2px 4px -2px rgba(16, 24, 40, 0.12), 0 4px 8px -2px rgba(16, 24, 40, 0.20)',
         'lg': '0 4px 6px -2px rgba(16, 24, 40, 0.03), 0 12px 16px -4px rgba(16, 24, 40, 0.08)',
         'xl': '0 8px 8px -4px rgba(16, 24, 40, 0.03), 0 20px 24px -4px rgba(16, 24, 40, 0.08)',
         '2xl': '0 24px 48px -12px rgba(16, 24, 40, 0.18)',
