@@ -4,7 +4,7 @@ import { slate, brand as brandColor } from "../colors";
 export const brand = {
   'light': vars({
     '--color-input': slate['8'],
-    '--color-primary': 'red',
+    '--color-primary': brandColor['7'],
     '--color-secondary': 'green'
   }),
   'dark': vars({

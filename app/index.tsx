@@ -181,11 +181,7 @@ export default function Screen() {
 							)}
 						/>
 					</Form>
-					<Button
-						variant="outline"
-						className="shadow shadow-foreground/5"
-						onPress={updateProgressValue}
-					>
+					<Button onPress={updateProgressValue}>
 						<Text>Atualizar</Text>
 					</Button>
 				</CardFooter>
