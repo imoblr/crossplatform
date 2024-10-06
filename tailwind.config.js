@@ -39,7 +39,7 @@ module.exports = {
         foreground: 'hsl(var(--foreground))',
         primary: {
           DEFAULT: 'var(--color-primary)',
-          foreground: '#FF0aaa',
+          foreground: colors.slate['1'],
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',

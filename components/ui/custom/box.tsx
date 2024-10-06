@@ -1,19 +1,31 @@
-import React from "react";
-import { View, type ViewProps } from "react-native";
+import { cn } from "@/lib/utils";
+import * as React from "react";
+import { Platform, View } from "react-native";
 
-import type { VariantProps } from "@gluestack-ui/nativewind-utils";
-import { boxStyle } from "./styles";
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+type ComponentPropsWithAsChild<T extends React.ElementType<any>> =
+	React.ComponentPropsWithoutRef<T> & {
+		asChild?: boolean;
+	};
+type ViewRef = React.ElementRef<typeof View>;
+type SlottableViewProps = ComponentPropsWithAsChild<typeof View>;
 
-type IBoxProps = ViewProps &
-	VariantProps<typeof boxStyle> & { className?: string };
-
-const Box = React.forwardRef<React.ElementRef<typeof View>, IBoxProps>(
-	({ className, ...props }, ref) => {
+const Box = React.forwardRef<ViewRef, SlottableViewProps>(
+	({ className, asChild = false, ...props }, ref) => {
 		return (
-			<View ref={ref} {...props} className={boxStyle({ class: className })} />
+			<View
+				className={cn(
+					Platform.OS === "web"
+						? "relative z-0 m-0 box-border flex min-h-0 min-w-0 list-none flex-col items-stretch border-0 bg-transparent p-0 text-decoration-none"
+						: "",
+					className,
+				)}
+				ref={ref}
+				{...props}
+			/>
 		);
 	},
 );
-
 Box.displayName = "Box";
+
 export { Box };
