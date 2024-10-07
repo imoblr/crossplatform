@@ -10,7 +10,7 @@ const buttonVariants = cva(
 		variants: {
 			variant: {
 				default:
-					"border shadow-xs border-primary-8 bg-primary web:hover:opacity-90 active:opacity-90",
+					"border shadow-[inset_1px_0_1px_0_var(--color-primary-6),inset_0_1px_1px_0_var(--color-primary-5),inset_-1px_0_1px_0_var(--color-primary-6),inset_0_-1px_1px_0_var(--color-primary-7)] border-primary-8 bg-primary web:hover:opacity-90 active:opacity-90",
 				destructive: "bg-destructive web:hover:opacity-90 active:opacity-90",
 				outline:
 					"border border-input bg-background web:hover:bg-accent web:hover:text-accent-foreground active:bg-accent",
@@ -20,9 +20,10 @@ const buttonVariants = cva(
 				link: "web:underline-offset-4 web:hover:underline web:focus:underline ",
 			},
 			size: {
-				default: "h-10 px-4 py-2 native:h-12 native:px-5 native:py-3",
+				default:
+					"h-10 px-4 py-2 rounded-lg native:h-12 native:px-5 native:py-3",
 				sm: "h-9 rounded-md px-3",
-				lg: "h-11 rounded-md px-8 native:h-14",
+				lg: "h-11 rounded-xl px-8 native:h-14",
 				icon: "h-10 w-10",
 			},
 		},
