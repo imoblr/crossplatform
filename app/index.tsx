@@ -181,8 +181,8 @@ export default function Screen() {
 							)}
 						/>
 					</Form>
-					<Button onPress={updateProgressValue}>
-						<Text>Atualizar</Text>
+					<Button size="lg" onPress={updateProgressValue}>
+						<Text>Acessar minha conta</Text>
 					</Button>
 				</CardFooter>
 			</Card>

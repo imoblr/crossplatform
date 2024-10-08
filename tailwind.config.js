@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin')
+
 const { hairlineWidth } = require('nativewind/theme');
 const { colors } = require('./theme/colors');
 
@@ -22,9 +24,14 @@ module.exports = {
       'full': '9999px',
     },
     extend: {
+      textShadow: {
+        sm: '0 1px 2px var(--tw-shadow-color)',
+        DEFAULT: '0 2px 4px var(--tw-shadow-color)',
+        lg: '0 8px 16px var(--tw-shadow-color)',
+      },
       boxShadow: {
         DEFAULT: '0 2px 4px -2px rgba(16, 24, 40, 0.06), 0 4px 8px -2px rgba(16, 24, 40, 0.1)',
-        'xs': '0 1px 2px 0 rgba(16, 24, 40, 0.1)',
+        'xs': '0 1px 2px 0 rgba(16, 24, 40, 0.08)',
         'sm': '0 1px 2px 0 rgba(16, 24, 40, 0.12), 0 1px 3px 0 rgba(16, 24, 40, 0.20)',
         'md': '0 2px 4px -2px rgba(16, 24, 40, 0.12), 0 4px 8px -2px rgba(16, 24, 40, 0.20)',
         'lg': '0 4px 6px -2px rgba(16, 24, 40, 0.03), 0 12px 16px -4px rgba(16, 24, 40, 0.08)',
@@ -98,5 +105,16 @@ module.exports = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [
+    require('tailwindcss-animate'),
+    plugin(({ matchUtilities, theme }) => {
+      matchUtilities(
+        {
+          'textshadow': (value) => ({
+            textShadow: value,
+          }),
+        },
+        { values: theme('textShadow') }
+      )
+    }),],
 };

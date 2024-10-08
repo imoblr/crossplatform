@@ -5,12 +5,12 @@ import { TextClassContext } from "@/components/ui/text";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-	"group flex items-center justify-center rounded-md web:ring-offset-background web:transition-colors web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2",
+	"group flex items-center justify-center web:ring-offset-background web:transition-colors web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-ring web:focus-visible:ring-offset-2",
 	{
 		variants: {
 			variant: {
 				default:
-					"border shadow-[inset_1px_0_0.5px_0_var(--color-primary-6),inset_0_1px_0.5px_0_var(--color-primary-5),inset_-1px_0_0.5px_0_var(--color-primary-6),inset_0_-1px_0.5px_0_var(--color-primary-7)] border-primary-7 bg-primary web:hover:opacity-90 active:opacity-90",
+					"border shadow-[inset_1px_0_0.4px_0_var(--color-primary-6),inset_0_1px_0.4px_0_var(--color-primary-5),inset_-1px_0_0.4px_0_var(--color-primary-6),inset_0_-1px_0.4px_0_var(--color-primary-7)] border-primary-7 bg-primary web:hover:opacity-90 active:opacity-90",
 				destructive: "bg-destructive web:hover:opacity-90 active:opacity-90",
 				outline:
 					"border border-input bg-background web:hover:bg-accent web:hover:text-accent-foreground active:bg-accent",
@@ -21,8 +21,8 @@ const buttonVariants = cva(
 			},
 			size: {
 				default:
-					"h-10 px-4 py-2 rounded-md native:h-12 native:px-5 native:py-3",
-				sm: "h-9 rounded-sm px-3",
+					"h-10 px-4 py-2 rounded-lg native:h-12 native:px-5 native:py-3",
+				sm: "h-9 rounded-md px-3",
 				lg: "h-11 rounded-lg px-8 native:h-14",
 				icon: "h-10 w-10",
 			},
@@ -39,7 +39,7 @@ const buttonTextVariants = cva(
 	{
 		variants: {
 			variant: {
-				default: "text-primary-foreground",
+				default: "text-primary-foreground textshadow-lg",
 				destructive: "text-destructive-foreground",
 				outline: "group-active:text-accent-foreground",
 				secondary:
@@ -50,7 +50,7 @@ const buttonTextVariants = cva(
 			size: {
 				default: "",
 				sm: "",
-				lg: "native:text-lg",
+				lg: "text-md",
 				icon: "",
 			},
 		},

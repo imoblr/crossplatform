@@ -20,7 +20,7 @@ export const brand = {
     '--button-primary-outer-gradient-1': 'linear-gradient(180deg, #000 0%, #FFF 100%)',
     '--button-primary-outer-gradient-2': 'linear-gradient(180deg, var(--color-primary-7) 0%, var(--color-primary-6) 100%)',
     '--color-input': slate['8'],
-    '--color-primary': brandColor['7'],
+    '--color-primary': brandColor['6'],
     '--color-secondary': 'green'
   }),
   'dark': vars({
