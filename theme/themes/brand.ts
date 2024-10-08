@@ -4,6 +4,7 @@ import { slate, brand as brandColor } from "../colors";
 export const brand = {
   'light': vars({
     // Primary theme color
+    '--color-primary': brandColor['6'],
     '--color-primary-1': brandColor['1'],
     '--color-primary-2': brandColor['2'],
     '--color-primary-3': brandColor['3'],
@@ -20,7 +21,6 @@ export const brand = {
     '--button-primary-outer-gradient-1': 'linear-gradient(180deg, #000 0%, #FFF 100%)',
     '--button-primary-outer-gradient-2': 'linear-gradient(180deg, var(--color-primary-7) 0%, var(--color-primary-6) 100%)',
     '--color-input': slate['8'],
-    '--color-primary': brandColor['6'],
     '--color-secondary': 'green'
   }),
   'dark': vars({
