@@ -30,6 +30,7 @@ import {
 	FormCheckbox,
 	FormField,
 	FormInput,
+	HStack,
 } from "@/components/ui";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -130,6 +131,14 @@ export default function Screen() {
 					<Button className="w-full" size="lg" onPress={updateProgressValue}>
 						<Text className="bg-brand">Acessar minha conta</Text>
 					</Button>
+					<HStack className="w-full">
+						<Button className="flex-1">
+							<Text>Entrar com Google</Text>
+						</Button>
+						<Button className="flex-1">
+							<Text>Entrar com Apple</Text>
+						</Button>
+					</HStack>
 				</Box>
 			</Form>
 		</Center>
