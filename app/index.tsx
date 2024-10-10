@@ -182,7 +182,7 @@ export default function Screen() {
 						/>
 					</Form>
 					<Button size="lg" onPress={updateProgressValue}>
-						<Text>Acessar minha conta</Text>
+						<Text className="bg-brand">Acessar minha conta</Text>
 					</Button>
 				</CardFooter>
 			</Card>

@@ -43,8 +43,26 @@ module.exports = {
         border: 'hsl(var(--border))',
         input: 'var(--color-input)', 
         ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
+        background: {
+          DEFAULT: 'var(--color-background)',
+          a1: 'var(--color-background-a1)',
+          a2: 'var(--color-background-a2)',
+          a3: 'var(--color-background-a3)',
+          darker: 'var(--color-background-darker)',
+          'darker-a1': 'var(--color-background-darker-a1)', 
+          'darker-a2': 'var(--color-background-darker-a2)',
+          'darker-a3': 'var(--color-background-darker-a3)',
+          darkest: 'var(--color-background-darkest)',
+          'darkest-a1': 'var(--color-background-darkest-a1)',
+          'darkest-a2': 'var(--color-background-darkest-a2)',
+          'darkest-a3': 'var(--color-background-darkest-a3)',
+        },
         foreground: 'hsl(var(--foreground))',
+        // - start - Primary colors
+        primary: {
+          DEFAULT: 'var(--color-primary)',
+          foreground: colors.slate['1'],
+        },
         'primary-1': 'var(--color-primary-1)',
         'primary-2': 'var(--color-primary-2)',
         'primary-3': 'var(--color-primary-3)',
@@ -57,10 +75,7 @@ module.exports = {
         'primary-10': 'var(--color-primary-10)',
         'primary-11': 'var(--color-primary-11)',
         'primary-12': 'var(--color-primary-12)',
-        primary: {
-          DEFAULT: 'var(--color-primary)',
-          foreground: colors.slate['1'],
-        },
+        // - end - Primary colors
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
