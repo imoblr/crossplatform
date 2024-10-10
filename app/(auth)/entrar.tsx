@@ -23,7 +23,14 @@ import {
 	TooltipContent,
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Form, FormCheckbox, FormField, FormInput } from "@/components/ui";
+import {
+	Box,
+	Center,
+	Form,
+	FormCheckbox,
+	FormField,
+	FormInput,
+} from "@/components/ui";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
@@ -93,31 +100,38 @@ export default function Screen() {
 		setProgress(Math.floor(Math.random() * 100));
 	}
 	return (
-		<View className="flex-1 items-center justify-center gap-5 p-6a">
+		<Center className="h-full w-full p-6">
 			<Form {...form}>
-				<FormField
-					control={form.control}
-					name="email"
-					render={({ field }) => (
-						<FormInput label="Email" placeholder="Email" {...field} />
-					)}
-				/>
+				<Box className="w-full max-w-[400px] space-y-6">
+					<FormField
+						control={form.control}
+						name="email"
+						render={({ field }) => (
+							<FormInput
+								className="w-full"
+								label="Email"
+								placeholder="Email"
+								{...field}
+							/>
+						)}
+					/>
 
-				<FormField
-					control={form.control}
-					name="tos"
-					render={({ field }) => (
-						<FormCheckbox
-							// checked={placeType.value}
-							label="Accept terms & conditions"
-							{...field}
-						/>
-					)}
-				/>
+					<FormField
+						control={form.control}
+						name="tos"
+						render={({ field }) => (
+							<FormCheckbox
+								// checked={placeType.value}
+								label="Accept terms & conditions"
+								{...field}
+							/>
+						)}
+					/>
+					<Button className="w-full" size="lg" onPress={updateProgressValue}>
+						<Text className="bg-brand">Acessar minha conta</Text>
+					</Button>
+				</Box>
 			</Form>
-			<Button size="lg" onPress={updateProgressValue}>
-				<Text className="bg-brand">Acessar minha conta</Text>
-			</Button>
-		</View>
+		</Center>
 	);
 }

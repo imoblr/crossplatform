@@ -2,8 +2,7 @@ import { Box, Center, Text } from "@/components/ui";
 import { Slot } from "expo-router";
 import { Image } from "react-native";
 import { useRef, useState } from "react";
-import { Dimensions, Pressable, StyleSheet } from "react-native";
-import { useWindowDimensions, View } from "react-native";
+import { View } from "react-native";
 import { useSharedValue } from "react-native-reanimated";
 import Carousel, {
 	type ICarouselInstance,
@@ -68,6 +67,7 @@ export default function AuthLayout() {
 				<Carousel
 					ref={ref}
 					width={width}
+					// @ts-ignore
 					height="100%"
 					data={testimonials}
 					onProgressChange={reanimatedProgress}
