@@ -1,125 +1,77 @@
-import { Box, Center } from "@/components/ui";
+import { Box, Center, Text } from "@/components/ui";
 import { Slot } from "expo-router";
-import { MotiImage, AnimatePresence, Text } from "moti";
-import { wrap } from "popmotion";
-import { useState } from "react";
-import { Pressable, StyleSheet } from "react-native";
+import { useRef, useState } from "react";
+import { Dimensions, Pressable, StyleSheet } from "react-native";
 import { useWindowDimensions, View } from "react-native";
+import { useSharedValue } from "react-native-reanimated";
+import Carousel, {
+	type ICarouselInstance,
+	Pagination,
+} from "react-native-reanimated-carousel";
 
 const TestimonialImage1 = require("../../assets/images/testimonial-henrico.jpg");
 const TestimonialImage2 = require("../../assets/images/testimonial-monica.jpg");
 
-export default function AuthLayout() {
-	const { width } = useWindowDimensions();
-	const [[index, direction], setState] = useState([0, 0]);
+const data = [...new Array(6).keys()];
+const width = 520;
 
-	const paginate = (direction: 1 | -1) => () => {
-		setState(([index]) => {
-			return [index + direction, direction];
+export default function AuthLayout() {
+	const ref = useRef<ICarouselInstance>(null);
+	const progress = useSharedValue<number>(0);
+
+	const onPressPagination = (index: number) => {
+		ref.current?.scrollTo({
+			/**
+			 * Calculate the difference between the current index and the target index
+			 * to ensure that the carousel scrolls to the nearest index
+			 */
+			count: index - progress.value,
+			animated: true,
 		});
 	};
 
-	const url = photos[wrap(0, photos.length, index)];
-
 	return (
 		<View className="flex-1 flex-row bg-background p-16">
-			<Box className="w-[50%] flex-row justify-around gap-3">
+			<Box className="flex flex-1 flex-row justify-around gap-3">
 				<Slot />
 			</Box>
-			<Box className="position-relative w-[50%] flex-row justify-around gap-3 overflow-hidden rounded-xl p-6">
+			<Box className="position-relative w-[520px] flex-row justify-around gap-3 overflow-hidden rounded-xl bg-slate-10">
+				<Carousel
+					ref={ref}
+					width={width}
+					height="100%"
+					data={data}
+					onProgressChange={progress}
+					renderItem={({ index }) => (
+						<View
+							style={{
+								flex: 1,
+								borderWidth: 1,
+								justifyContent: "center",
+							}}
+						>
+							<Text style={{ textAlign: "center", fontSize: 30 }}>{index}</Text>
+						</View>
+					)}
+				/>
 				<Box className="absolute bottom-0 left-0 z-10 w-full bg-background-darkest-a3 px-8 py-6 bg-blend-overlay backdrop-blur-sm">
+					<Pagination.Basic
+						progress={progress}
+						data={data}
+						dotStyle={{ backgroundColor: "rgba(0,0,0,0.2)", borderRadius: 50 }}
+						containerStyle={{ gap: 5, marginTop: 10 }}
+						onPress={onPressPagination}
+					/>
 					<Text className="pr-16 font-medium text-[#FFF] text-xl">
 						"A Imoblr nos ajudou a otimizar nossas oportunidades de negócio e
 						diminuiu nossos custos operacionais"
 					</Text>
 					<Box className="w-full flex-row justify-between gap-2">
 						<Box>sdfsd</Box>
-						<Box>
-							<View style={styles.actions}>
-								<Pressable onPress={paginate(-1)}>
-									<Center className="h-[50px] w-[50px] rounded-full bg-background-a3">
-										<Text selectable={false} className="">
-											👈
-										</Text>
-									</Center>
-								</Pressable>
-								<Pressable onPress={paginate(1)}>
-									<Center className="h-[50px] w-[50px] rounded-full bg-background-a3">
-										<Text selectable={false} className="">
-											👉
-										</Text>
-									</Center>
-								</Pressable>
-							</View>
-						</Box>
 					</Box>
 				</Box>
-				<AnimatePresence initial={false} custom={direction}>
-					<MotiImage
-						resizeMode="cover"
-						from={{
-							opacity: 0,
-							translateX: direction * width,
-						}}
-						animate={{
-							opacity: 1,
-							translateX: 0,
-							zIndex: 1,
-						}}
-						exit={(custom) => {
-							"worklet";
-							return {
-								opacity: 0,
-								translateX: custom * width * -1,
-								zIndex: 0,
-							};
-						}}
-						style={[styles.image, { width }]}
-						key={index}
-						source={url}
-						transition={{
-							translateX: { type: "spring", stiffness: 300, damping: 30 },
-							opacity: { duration: 200, type: "timing" },
-						}}
-					/>
-				</AnimatePresence>
 			</Box>
 		</View>
 	);
 }
-
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: "center",
-		backgroundColor: "#0D1117",
-	},
-	padded: {
-		padding: 16,
-	},
-	image: {
-		width: "auto",
-		height: "100%",
-		alignSelf: "center",
-	},
-	actions: {
-		flexDirection: "row",
-		margin: 16,
-		justifyContent: "space-between",
-		zIndex: 1,
-	},
-	button: {
-		fontSize: 42,
-		backgroundColor: "white",
-		height: 75,
-		width: 75,
-		borderRadius: 100,
-		alignItems: "center",
-		justifyContent: "center",
-		textAlign: "center",
-		lineHeight: 75,
-	},
-	action: {},
-});
-
 const photos = [TestimonialImage1, TestimonialImage2];

@@ -87,20 +87,6 @@ const formSchema = z.object({
 });
 
 export default function Screen() {
-	const ref = React.useRef<ICarouselInstance>(null);
-	const progress = useSharedValue<number>(0);
-
-	const onPressPagination = (index: number) => {
-		ref.current?.scrollTo({
-			/**
-			 * Calculate the difference between the current index and the target index
-			 * to ensure that the carousel scrolls to the nearest index
-			 */
-			count: index - progress.value,
-			animated: true,
-		});
-	};
-
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -114,36 +100,6 @@ export default function Screen() {
 
 	return (
 		<View className="flex-1 items-center justify-center gap-5 p-6a">
-			{isWeb && (
-				<Carousel
-					ref={ref}
-					width={width}
-					height={width / 2}
-					data={data}
-					onProgressChange={progress}
-					renderItem={({ index }) => (
-						<View
-							style={{
-								flex: 1,
-								borderWidth: 1,
-								justifyContent: "center",
-							}}
-						>
-							<Text style={{ textAlign: "center", fontSize: 30 }}>{index}</Text>
-						</View>
-					)}
-				/>
-			)}
-
-			{isWeb && (
-				<Pagination.Basic
-					progress={progress}
-					data={data}
-					dotStyle={{ backgroundColor: "rgba(0,0,0,0.2)", borderRadius: 50 }}
-					containerStyle={{ gap: 5, marginTop: 10 }}
-					onPress={onPressPagination}
-				/>
-			)}
 			<Form {...form}>
 				<FormField
 					control={form.control}
