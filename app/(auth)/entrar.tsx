@@ -35,6 +35,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
+import ImoblrLogo from "@/components/ImoblrLogo";
 
 const GITHUB_AVATAR_URI =
 	"https://i.pinimg.com/originals/ef/a2/8d/efa28d18a04e7fa40ed49eeb0ab660db.jpg";
@@ -102,8 +103,9 @@ export default function Screen() {
 	}
 	return (
 		<Center className="h-full w-full p-6">
+			<ImoblrLogo />
 			<Form {...form}>
-				<Box className="w-full max-w-[400px] space-y-6">
+				<Box className="w-full max-w-[400px] space-y-4">
 					<FormField
 						control={form.control}
 						name="email"
@@ -119,11 +121,24 @@ export default function Screen() {
 
 					<FormField
 						control={form.control}
+						name="password"
+						render={({ field }) => (
+							<FormInput
+								className="w-full"
+								label="Senha"
+								placeholder="Senha"
+								{...field}
+							/>
+						)}
+					/>
+
+					<FormField
+						control={form.control}
 						name="tos"
 						render={({ field }) => (
 							<FormCheckbox
 								// checked={placeType.value}
-								label="Accept terms & conditions"
+								label="Continuar logado por 30 dias"
 								{...field}
 							/>
 						)}
@@ -132,10 +147,10 @@ export default function Screen() {
 						<Text className="bg-brand">Acessar minha conta</Text>
 					</Button>
 					<HStack className="w-full">
-						<Button className="flex-1">
+						<Button variant="outline" className="flex-1">
 							<Text>Entrar com Google</Text>
 						</Button>
-						<Button className="flex-1">
+						<Button variant="outline" className="flex-1">
 							<Text>Entrar com Apple</Text>
 						</Button>
 					</HStack>
