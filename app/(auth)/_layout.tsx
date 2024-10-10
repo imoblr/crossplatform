@@ -33,9 +33,8 @@ const width = 480;
 
 export default function AuthLayout() {
 	const ref = useRef<ICarouselInstance>(null);
-	const progress = useSharedValue<number>(0);
-
-	console.log(progress);
+	const reanimatedProgress = useSharedValue<number>(0);
+	const [slideIndex, setSlideIndex] = useState(0);
 
 	const onPressPagination = (index: number) => {
 		ref.current?.scrollTo({
@@ -43,7 +42,7 @@ export default function AuthLayout() {
 			 * Calculate the difference between the current index and the target index
 			 * to ensure that the carousel scrolls to the nearest index
 			 */
-			count: index - progress.value,
+			count: index - reanimatedProgress.value,
 			animated: true,
 		});
 	};
@@ -56,7 +55,7 @@ export default function AuthLayout() {
 			<Box className="position-relative w-[480px] flex-row overflow-hidden rounded-xxl shadow-3xl">
 				<Center className="absolute top-0 left-0 z-10 w-full">
 					<Pagination.Basic
-						progress={progress}
+						progress={reanimatedProgress}
 						data={testimonials}
 						dotStyle={{
 							backgroundColor: "rgba(0,0,0,0.2)",
@@ -71,27 +70,28 @@ export default function AuthLayout() {
 					width={width}
 					height="100%"
 					data={testimonials}
-					onProgressChange={progress}
+					onProgressChange={reanimatedProgress}
+					onScrollEnd={setSlideIndex}
 					renderItem={({ index }) => (
 						<Center className="h-full w-[480px] overflow-hidden bg-background-a3">
 							<Image
 								source={testimonials[index].image}
-								style={{ height: "100%", minWidth: width, borderRadius: 50 }}
+								style={{ height: "100%", minWidth: width }}
 							/>
-							<Box className="absolute bottom-0 left-0 z-10 h-[30%] w-full rounded-xxl bg-background-darkest-a3 px-8 py-6 backdrop-blur-sm">
-								<Text className="mb-2 pr-16 font-semibold text-2xl text-[#FFF]">
-									{testimonials[index].text}
-								</Text>
-								<Text className="text-[#FFF] text-xl">
-									{testimonials[index].name}
-								</Text>
-								<Text className="text-[#FFF] text-sm">
-									{testimonials[index].job}
-								</Text>
-							</Box>
 						</Center>
 					)}
 				/>
+				<Box className="absolute bottom-0 left-0 z-10 h-[30%] w-full rounded-t-xxl bg-background-darkest-a3 px-12 py-10 backdrop-blur">
+					<Text className="mb-2 font-medium text-2xl text-[#FFF]">
+						{testimonials[slideIndex || 0].text}
+					</Text>
+					<Text className="text-[#FFF] text-xl">
+						{testimonials[slideIndex || 0].name}
+					</Text>
+					<Text className="text-[#FFF] text-sm">
+						{testimonials[slideIndex || 0].job}
+					</Text>
+				</Box>
 			</Box>
 		</View>
 	);
