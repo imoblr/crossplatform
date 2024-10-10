@@ -9,6 +9,7 @@ import Carousel, {
 	type ICarouselInstance,
 	Pagination,
 } from "react-native-reanimated-carousel";
+import { cn } from "@/lib";
 
 const TestimonialImage1 = require("../../assets/images/testimonial-henrico.jpg");
 const TestimonialImage2 = require("../../assets/images/testimonial-monica.jpg");
@@ -25,7 +26,7 @@ const testimonials = [
 		text: "Conseguimos colocar nossos processos repetitivos no piloto automático e economizamos muito tempo!",
 	},
 ];
-const width = 520;
+const width = 480;
 
 export default function AuthLayout() {
 	const ref = useRef<ICarouselInstance>(null);
@@ -43,11 +44,11 @@ export default function AuthLayout() {
 	};
 
 	return (
-		<View className="flex-1 flex-row bg-background p-16">
-			<Box className="flex flex-1 flex-row justify-around gap-3 rounded-l-xxl bg-background-darker">
+		<View className="flex-1 flex-row p-16">
+			<Box className="flex flex-1 flex-row rounded-l-xxl pr-16">
 				<Slot />
 			</Box>
-			<Box className="position-relative w-[520px] flex-row justify-around gap-3 overflow-hidden rounded-r-xxl bg-slate-10">
+			<Box className="position-relative w-[480px] flex-row justify-around gap-3 overflow-hidden rounded-xxl shadow-3xl">
 				<Carousel
 					ref={ref}
 					width={width}
@@ -55,7 +56,14 @@ export default function AuthLayout() {
 					data={testimonials}
 					onProgressChange={progress}
 					renderItem={({ index }) => (
-						<Center className="h-full w-full">
+						<Center
+							className={cn(
+								"h-full w-[480px] overflow-hidden bg-background-a3",
+								index % 2 === 0
+									? "bg-background-darkest-a3"
+									: "bg-background-a3",
+							)}
+						>
 							<Image
 								source={testimonials[index].image}
 								style={{ height: "100%", minWidth: width }}
@@ -63,7 +71,7 @@ export default function AuthLayout() {
 						</Center>
 					)}
 				/>
-				<Box className="absolute bottom-0 left-0 z-10 w-full bg-background-darkest-a3 px-8 py-6 bg-blend-overlay backdrop-blur-sm">
+				<Box className="absolute bottom-0 left-0 z-10 w-full bg-background-darkest-a3 px-8 py-6 bg-blend-saturation backdrop-blur-sm">
 					<Pagination.Basic
 						progress={progress}
 						data={testimonials}
