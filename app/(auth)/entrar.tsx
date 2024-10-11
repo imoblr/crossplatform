@@ -35,7 +35,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
-import ImoblrLogo from "@/components/ImoblrLogo";
+import ImoblrSymbol from "@/components/ImoblrSymbol";
 
 const GITHUB_AVATAR_URI =
 	"https://i.pinimg.com/originals/ef/a2/8d/efa28d18a04e7fa40ed49eeb0ab660db.jpg";
@@ -103,7 +103,7 @@ export default function Screen() {
 	}
 	return (
 		<Center className="h-full w-full p-6">
-			<ImoblrLogo />
+			<ImoblrSymbol />
 			<Form {...form}>
 				<Box className="w-full max-w-[400px] space-y-4">
 					<FormField
