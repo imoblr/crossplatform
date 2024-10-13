@@ -1,28 +1,6 @@
 import * as React from "react";
-import { View } from "react-native";
-import Animated, {
-	FadeInUp,
-	FadeOutDown,
-	LayoutAnimationConfig,
-} from "react-native-reanimated";
-import { Info } from "@/lib/icons/Info";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import {
-	Card,
-	CardContent,
-	CardDescription,
-	CardFooter,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
 import { Text } from "@/components/ui/text";
-import {
-	Tooltip,
-	TooltipContent,
-	TooltipTrigger,
-} from "@/components/ui/tooltip";
 import {
 	Box,
 	Center,
@@ -31,11 +9,13 @@ import {
 	FormField,
 	FormInput,
 	HStack,
+	// ImoblrSymbol,
 } from "@/components/ui";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
-import ImoblrSymbol from "@/components/ImoblrSymbol";
+import { ImoblrSymbol } from "@/components/ImoblrSymbol";
+import { Link } from "expo-router";
 
 const GITHUB_AVATAR_URI =
 	"https://i.pinimg.com/originals/ef/a2/8d/efa28d18a04e7fa40ed49eeb0ab660db.jpg";
@@ -103,7 +83,18 @@ export default function Screen() {
 	}
 	return (
 		<Center className="h-full w-full p-6">
-			<ImoblrSymbol />
+			<Center className="mb-10">
+				<ImoblrSymbol className="mb-4" />
+				<Text className="text-2xl">Bem-vindo de volta!</Text>
+				<Text className="text-muted-foreground">
+					Ainda não tem uma conta?{" "}
+					<Link className="text-primary" href={{ pathname: "(auth)/cadastro" }}>
+						Crie uma agora
+					</Link>
+				</Text>
+			</Center>
+
+			{/* <ThemeToggle /> */}
 			<Form {...form}>
 				<Box className="w-full max-w-[400px] space-y-4">
 					<FormField
@@ -112,6 +103,7 @@ export default function Screen() {
 						render={({ field }) => (
 							<FormInput
 								className="w-full"
+								autoFocus
 								label="Email"
 								placeholder="Email"
 								{...field}
@@ -137,6 +129,7 @@ export default function Screen() {
 						name="tos"
 						render={({ field }) => (
 							<FormCheckbox
+								className="my-2"
 								// checked={placeType.value}
 								label="Continuar logado por 30 dias"
 								{...field}

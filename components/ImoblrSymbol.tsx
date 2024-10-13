@@ -1,57 +1,49 @@
-import type * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Image } from "react-native";
 import { useColorScheme } from "nativewind";
 
 import { Box } from "./ui";
+import { forwardRef } from "react";
 
-const hstackVariants = cva("flex flex-row", {
+const imoblrSymbolVariants = cva("flex", {
 	variants: {
-		gap: {
-			default: "gap-4",
-			xs: "gap-2",
-			sm: "gap-3",
-			md: "gap-4",
-			lg: "gap-6",
-			xl: "gap-8",
+		size: {
+			default: "w-[80px] h-[80px]",
+			xs: "w-[40px] h-40px]",
+			sm: "w-[60px] h-[60px]",
+			md: "w-[80px] h-[80px]",
+			lg: "w-[100px] h-[100px]",
+			xl: "w-[100px] h-[100px]",
 		},
 	},
 	defaultVariants: {
-		gap: "default",
+		size: "default",
 	},
 });
 
-type HStackProps = React.ComponentPropsWithoutRef<typeof Box> &
-	VariantProps<typeof hstackVariants>;
+type ImoblrSymbolProps = React.ComponentPropsWithoutRef<typeof Box> &
+	VariantProps<typeof imoblrSymbolVariants>;
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 type ComponentPropsWithAsChild<T extends React.ElementType<any>> =
 	React.ComponentPropsWithoutRef<T> & {
 		asChild?: boolean;
 	};
-type HStackRef = React.ElementRef<typeof Box>;
+type ImoblrSymbolRef = React.ElementRef<typeof Box>;
 type SlottableViewProps = ComponentPropsWithAsChild<typeof Box>;
 
-const HStack = React.forwardRef<React.ElementRef<typeof Box>, HStackProps>(
-	({ className, gap, ...props }, ref) => {
-		return (
-			<Box
-				className={hstackVariants({ gap, className })}
-				ref={ref}
-				{...props}
-			/>
-		);
-	},
-);
-HStack.displayName = "HStack";
-
-export { HStack, hstackVariants };
-export type { HStackProps };
-
-const ImoblrSymbol = () => {
+const ImoblrSymbol = forwardRef<
+	React.ElementRef<typeof Box>,
+	ImoblrSymbolProps
+>(({ className, size, ...props }, ref) => {
 	const { colorScheme } = useColorScheme();
+
 	return (
-		<Box className="h-[100px] w-[100px]">
+		<Box
+			className={imoblrSymbolVariants({ size, className })}
+			ref={ref}
+			{...props}
+		>
 			<Image
 				source={
 					colorScheme === "light"
@@ -63,6 +55,8 @@ const ImoblrSymbol = () => {
 			/>
 		</Box>
 	);
-};
+});
+ImoblrSymbol.displayName = "ImoblrSymbol";
 
-export default ImoblrSymbol;
+export { ImoblrSymbol, imoblrSymbolVariants };
+export type { ImoblrSymbolProps };
