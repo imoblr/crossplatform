@@ -16,6 +16,8 @@ import * as z from "zod";
 import { useForm } from "react-hook-form";
 import { ImoblrSymbol } from "@/components/ImoblrSymbol";
 import { Link } from "expo-router";
+import { Image } from "react-native";
+import { useColorScheme } from "nativewind";
 
 const GITHUB_AVATAR_URI =
 	"https://i.pinimg.com/originals/ef/a2/8d/efa28d18a04e7fa40ed49eeb0ab660db.jpg";
@@ -67,6 +69,7 @@ const formSchema = z.object({
 
 export default function Screen() {
 	const [progress, setProgress] = React.useState(78);
+	const { colorScheme } = useColorScheme();
 	const form = useForm<z.infer<typeof formSchema>>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -141,10 +144,31 @@ export default function Screen() {
 					</Button>
 					<HStack className="w-full">
 						<Button variant="outline" className="flex-1">
-							<Text>Entrar com Google</Text>
+							<Image
+								source={
+									colorScheme === "light"
+										? require("@/assets/logos/google-logo.svg")
+										: require("@/assets/logos/google-logo.svg")
+								}
+								alt="imoblr miniature logo"
+								// @ts-ignore
+								style={{ width: "22px", height: "22.5px" }}
+							/>
+							<Text className="ml-2">Google</Text>
 						</Button>
 						<Button variant="outline" className="flex-1">
-							<Text>Entrar com Apple</Text>
+							<Image
+								source={
+									colorScheme === "light"
+										? require("@/assets/logos/apple-logo.svg")
+										: require("@/assets/logos/apple-logo.svg")
+								}
+								alt="imoblr miniature logo"
+								// @ts-ignore
+								style={{ width: "20px", height: "24.5px", marginTop: "-3px" }}
+							/>
+
+							<Text className="ml-2">Apple</Text>
 						</Button>
 					</HStack>
 				</Box>
