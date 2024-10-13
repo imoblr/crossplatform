@@ -40,8 +40,7 @@ module.exports = {
         '3xl': '0 32px 64px -12px rgba(16, 24, 40, 0.16)',
       },
       colors: {
-        border: 'hsl(var(--border))',
-        input: 'var(--color-input)', 
+        border: 'var(--color-border)',
         ring: 'hsl(var(--ring))',
         background: {
           DEFAULT: 'var(--color-background)',
