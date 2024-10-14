@@ -18,7 +18,9 @@ const LabelSpacer = React.forwardRef<CenterRef, SlottableViewProps>(
 			<Center className={cn("w-full flex-row", className)} ref={ref} {...props}>
 				<Separator className="w-[unset] flex-1" />
 				{label && (
-					<Text className="mx-4 text-muted-foreground text-sm">{label}</Text>
+					<Text className="mx-4 text-text-quaternary text-xs uppercase">
+						{label}
+					</Text>
 				)}
 				<Separator className="w-[unset] flex-1" />
 			</Center>
