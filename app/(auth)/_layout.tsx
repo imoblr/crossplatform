@@ -47,11 +47,11 @@ export default function AuthLayout() {
 	};
 
 	return (
-		<View className="flex-1 flex-row p-16">
-			<Box className="flex flex-1 flex-row rounded-l-xxl pr-16">
+		<View className="flex-1 flex-row p-2 lg:p-8 xl:p-16">
+			<Box className="flex flex-1 flex-row rounded-l-xxl lg:pr-8 xl:pr-16">
 				<Slot />
 			</Box>
-			<Box className="position-relative w-[480px] flex-row overflow-hidden rounded-xxl shadow-3xl">
+			<Box className="position-relative hidden w-[480px] flex-row overflow-hidden rounded-xxl shadow-3xl lg:flex">
 				<Center className="absolute top-0 left-0 z-10 w-full">
 					<Pagination.Basic
 						progress={reanimatedProgress}
