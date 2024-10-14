@@ -50,6 +50,22 @@ export const brand = {
     '--color-border': gray['300'],
     '--color-secondary': 'green',
     // -----------------------------------------------------------------------------
+    // TYPOGRAPHY COLORS
+    // -----------------------------------------------------------------------------
+    '--color-text': gray['900'],
+    '--color-text-on-brand': 'white',
+    '--color-text-secondary': gray['700'],
+    '--color-text-secondary_hover': gray['800'],
+    '--color-text-secondary_on-brand': brandColor['200'],
+    '--color-text-tertiary': gray['600'],
+    '--color-text-tertiary_hover': gray['700'],
+    '--color-text-tertiary_on-brand': brandColor['200'],
+    '--color-text-quaternary': gray['500'],
+    '--color-text-quaternary_on-brand': brandColor['300'],
+    '--color-text-disabled': gray['500'],
+    '--color-text-placeholder': gray['500'],
+    '--color-text-placeholder_subtle': gray['300'],
+    // -----------------------------------------------------------------------------
     // 
     // UTIL COLORS
     // 

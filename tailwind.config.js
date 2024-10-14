@@ -90,30 +90,28 @@ module.exports = {
         'gray-900': 'var(--color-gray-900)',
         'gray-950': 'var(--color-gray-950)',
         // - end - Primary colors
-        secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
+        // -----------------------------------------------------------------------------
+        // TYPOGRAPHY COLORS
+        // -----------------------------------------------------------------------------
+        'text': {
+          DEFAULT: 'var(--color-text)',
+          'on-brand': 'var(--color-text-on-brand)',
+          'secondary': 'var(--color-text-secondary)',
+          'secondary_hover': 'var(--color-text-secondary_hover)',
+          'secondary_on-brand': 'var(--color-text-secondary_on-brand)',
+          'tertiary': 'var(--color-text-tertiary)',
+          'tertiary_hover': 'var(--color-text-tertiary_hover)',
+          'tertiary_on-brand': 'var(--color-text-tertiary_on-brand)',
+          'quaternary': 'var(--color-text-quaternary)',
+          'quaternary_on-brand': 'var(--color-text-quaternary_on-brand)',
+          'disabled': 'var(--color-text-disabled)',
+          'placeholder': 'var(--color-text-placeholder)',
+          'placeholder_subtle': 'var(--color-text-placeholder_subtle)',
         },
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
-        },
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
-        },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
-        },
-        popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
-        },
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
-        },
+        // Shadow colors
+        '--color-shadow': 'rgba(10,13,18,0.05)',
+        '--color-shadow-dark': 'rgba(10,13,18,0.075)',  
+        '--color-shadow-darker': 'rgba(10,13,18,0.1)',  
       },
       borderWidth: {
         hairline: hairlineWidth(),

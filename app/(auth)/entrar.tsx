@@ -89,7 +89,7 @@ export default function Screen() {
 		<Center className="h-full w-full p-6">
 			<Center className="mb-10">
 				<ImoblrSymbol className="mb-4" />
-				<Text className="text-2xl">Bem-vindo de volta!</Text>
+				<Text className="text-2xl text-slate-100">Bem-vindo de volta!</Text>
 				<Text className="text-muted-foreground">
 					Ainda não tem uma conta?{" "}
 					<Link className="text-primary" href={{ pathname: "(auth)/cadastro" }}>
