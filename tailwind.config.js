@@ -12,6 +12,9 @@ module.exports = {
     colors: {
       ...colors,
     },
+    fontFamily: {
+      base: ['Figtree, Helvetica, Arial, sans-serif'],
+    },
     borderRadius: {
       'none': '0',
       'xs': '0.16rem',

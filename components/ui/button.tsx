@@ -10,7 +10,7 @@ const buttonVariants = cva(
 		variants: {
 			variant: {
 				default:
-					"border shadow-[inset_1px_0_0.4px_0_var(--color-primary-600),inset_0_1px_0.4px_0_var(--color-primary-500),inset_-1px_0_0.4px_0_var(--color-primary-600),inset_0_-1px_0.4px_0_var(--color-primary-700)] border-primary-[#000] bg-[#181D27] web:hover:opacity-90 active:opacity-90",
+					"border shadow-[inset_1px_0_0.4px_0_var(--color-gray-800),inset_0_1px_0.4px_0_var(--color-gray-700),inset_-1px_0_0.4px_0_var(--color-gray-800),inset_0_-1px_0.4px_0_var(--color-gray-900)] border-gray-950 bg-gray-950 web:hover:opacity-90 active:opacity-90",
 				brand:
 					"border shadow-[inset_1px_0_0.4px_0_var(--color-primary-600),inset_0_1px_0.4px_0_var(--color-primary-500),inset_-1px_0_0.4px_0_var(--color-primary-600),inset_0_-1px_0.4px_0_var(--color-primary-700)] border-primary-700 bg-primary web:hover:opacity-90 active:opacity-90",
 				destructive: "bg-destructive web:hover:opacity-90 active:opacity-90",
