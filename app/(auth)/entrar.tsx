@@ -9,6 +9,7 @@ import {
 	FormField,
 	FormInput,
 	HStack,
+	LabelSpacer,
 	// ImoblrSymbol,
 } from "@/components/ui";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -142,6 +143,7 @@ export default function Screen() {
 					<Button className="w-full" size="lg" onPress={updateProgressValue}>
 						<Text className="bg-brand">Acessar minha conta</Text>
 					</Button>
+					<LabelSpacer label="Ou entrar com" />
 					<HStack className="w-full">
 						<Button variant="outline" className="flex-1">
 							<Image
@@ -154,7 +156,7 @@ export default function Screen() {
 								// @ts-ignore
 								style={{ width: "18px", height: "18.5px" }}
 							/>
-							<Text className="ml-2">Entrar com Google</Text>
+							<Text className="ml-2">Google</Text>
 						</Button>
 						<Button variant="outline" className="flex-1">
 							<Image
@@ -168,7 +170,7 @@ export default function Screen() {
 								style={{ width: "16px", height: "19.8px", marginTop: "-3px" }}
 							/>
 
-							<Text className="ml-2">Entrar com Apple</Text>
+							<Text className="ml-2">Apple</Text>
 						</Button>
 					</HStack>
 				</Box>
