@@ -10,7 +10,7 @@ const Input = React.forwardRef<
 		<TextInput
 			ref={ref}
 			className={cn(
-				"web:flex h-12 web:w-full rounded-md border border-border bg-background px-4 web:py-2 native:text-lg text-base text-foreground native:leading-[1.25] shadow-xs web:ring-offset-background file:border-0 file:bg-transparent file:font-medium placeholder:text-muted-foreground web:focus-visible:border-primary-9 web:focus-visible:outline-none web:focus-visible:ring-2 web:focus-visible:ring-primary-3 web:focus-visible:ring-offset-2 lg:text-sm",
+				"web:flex h-12 web:w-full rounded-md border border-border bg-background px-4 web:py-2 native:text-lg text-base text-foreground native:leading-[1.25] shadow-xs web:ring-offset-background file:border-0 file:bg-transparent file:font-medium placeholder:text-muted-foreground web:focus-visible:border-primary-600 web:focus-visible:outline-none web:focus-visible:ring-4 web:focus-visible:ring-primary-50 web:focus-visible:ring-offset-0 lg:text-sm",
 				props.editable === false && "web:cursor-not-allowed opacity-50",
 				className,
 			)}

@@ -90,7 +90,7 @@ export default function Screen() {
 			<Center className="mb-10">
 				<ImoblrSymbol className="mb-4" />
 				<Text className="text-2xl text-slate-100">Bem-vindo de volta!</Text>
-				<Text className="text-muted-foreground">
+				<Text className="text-sm text-text-quaternary">
 					Ainda não tem uma conta?{" "}
 					<Link className="text-primary" href={{ pathname: "(auth)/cadastro" }}>
 						Crie uma agora
@@ -100,7 +100,7 @@ export default function Screen() {
 
 			{/* <ThemeToggle /> */}
 			<Form {...form}>
-				<Box className="w-full max-w-[400px] space-y-4">
+				<Box className="w-full max-w-[360px] space-y-4">
 					<FormField
 						control={form.control}
 						name="email"
