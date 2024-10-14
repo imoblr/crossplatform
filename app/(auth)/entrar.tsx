@@ -152,9 +152,9 @@ export default function Screen() {
 								}
 								alt="imoblr miniature logo"
 								// @ts-ignore
-								style={{ width: "22px", height: "22.5px" }}
+								style={{ width: "18px", height: "18.5px" }}
 							/>
-							<Text className="ml-2">Google</Text>
+							<Text className="ml-2">Entrar com Google</Text>
 						</Button>
 						<Button variant="outline" className="flex-1">
 							<Image
@@ -165,10 +165,10 @@ export default function Screen() {
 								}
 								alt="imoblr miniature logo"
 								// @ts-ignore
-								style={{ width: "20px", height: "24.5px", marginTop: "-3px" }}
+								style={{ width: "16px", height: "19.8px", marginTop: "-3px" }}
 							/>
 
-							<Text className="ml-2">Apple</Text>
+							<Text className="ml-2">Entrar com Apple</Text>
 						</Button>
 					</HStack>
 				</Box>

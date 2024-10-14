@@ -24,11 +24,6 @@ module.exports = {
       'full': '9999px',
     },
     extend: {
-      textShadow: {
-        sm: '0 1px 2px var(--tw-shadow-color)',
-        DEFAULT: '0 2px 4px var(--tw-shadow-color)',
-        lg: '0 8px 16px var(--tw-shadow-color)',
-      },
       boxShadow: {
         DEFAULT: '0 2px 4px -2px rgba(16, 24, 40, 0.06), 0 4px 8px -2px rgba(16, 24, 40, 0.1)',
         'xs': '0 1px 2px 0 rgba(16, 24, 40, 0.08)',
@@ -40,8 +35,14 @@ module.exports = {
         '3xl': '0 32px 64px -12px rgba(16, 24, 40, 0.16)',
       },
       colors: {
+        ...colors,
+        shadow: {
+          DEFAULT: 'var(--color-shadow)',
+          light: 'var(--color-shadow-light)',
+        },
         border: 'var(--color-border)',
         ring: 'hsl(var(--ring))',
+        
         background: {
           DEFAULT: 'var(--color-background)',
           a1: 'var(--color-background-a1)',
@@ -74,6 +75,20 @@ module.exports = {
         'primary-800': 'var(--color-primary-800)',
         'primary-900': 'var(--color-primary-900)',
         'primary-950': 'var(--color-primary-950)',
+        // - end - Primary colors
+        // - start - Primary colors
+        'gray-25': 'var(--color-gray-25)',
+        'gray-50': 'var(--color-gray-50)',
+        'gray-100': 'var(--color-gray-100)', 
+        'gray-200': 'var(--color-gray-200)',
+        'gray-300': 'var(--color-gray-300)',
+        'gray-400': 'var(--color-gray-400)',
+        'gray-500': 'var(--color-gray-500)',
+        'gray-600': 'var(--color-gray-600)',
+        'gray-700': 'var(--color-gray-700)',
+        'gray-800': 'var(--color-gray-800)',
+        'gray-900': 'var(--color-gray-900)',
+        'gray-950': 'var(--color-gray-950)',
         // - end - Primary colors
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
@@ -121,14 +136,5 @@ module.exports = {
   },
   plugins: [
     require('tailwindcss-animate'),
-    plugin(({ matchUtilities, theme }) => {
-      matchUtilities(
-        {
-          'textshadow': (value) => ({
-            textShadow: value,
-          }),
-        },
-        { values: theme('textShadow') }
-      )
-    }),],
+  ]
 };

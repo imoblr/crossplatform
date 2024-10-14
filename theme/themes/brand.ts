@@ -18,6 +18,20 @@ export const brand = {
     '--color-primary-800': brandColor['800'],
     '--color-primary-900': brandColor['900'],
     '--color-primary-950': brandColor['950'],
+    // Primary theme color
+    '--color-gray': gray['600'],
+    '--color-gray-25': gray['25'],
+    '--color-gray-50': gray['50'],
+    '--color-gray-100': gray['100'],
+    '--color-gray-200': gray['200'],
+    '--color-gray-300': gray['300'],
+    '--color-gray-400': gray['400'],
+    '--color-gray-500': gray['500'],
+    '--color-gray-600': gray['600'],
+    '--color-gray-700': gray['700'],
+    '--color-gray-800': gray['800'],
+    '--color-gray-900': gray['900'],
+    '--color-gray-950': gray['950'],
     // Theme color variables
     '--color-background': '#FFFFFF',
     '--color-background-a1': Color('#FFF').alpha(0.9),
@@ -34,7 +48,16 @@ export const brand = {
     '--button-primary-outer-gradient-1': 'linear-gradient(180deg, #000 0%, #FFF 100%)',
     '--button-primary-outer-gradient-2': 'linear-gradient(180deg, var(--color-primary-7) 0%, var(--color-primary-6) 100%)',
     '--color-border': gray['300'],
-    '--color-secondary': 'green'
+    '--color-secondary': 'green',
+    // -----------------------------------------------------------------------------
+    // 
+    // UTIL COLORS
+    // 
+    // -----------------------------------------------------------------------------
+    // Shadow colors
+    '--color-shadow': 'rgba(10,13,18,0.05)',
+    '--color-shadow-dark': 'rgba(10,13,18,0.075)',  
+    '--color-shadow-darker': 'rgba(10,13,18,0.1)',  
   }),
   'dark': vars({
     '--color-input': 'green',
