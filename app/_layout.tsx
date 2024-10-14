@@ -16,6 +16,10 @@ import { PortalHost } from "@rn-primitives/portal";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { setAndroidNavigationBar } from "@/lib/android-navigation-bar";
 import { AppThemesProvider } from "@/theme";
+import { useFonts } from "expo-font";
+
+// Prevent the splash screen from auto-hiding before getting the color scheme.
+SplashScreen.preventAutoHideAsync();
 
 const LIGHT_THEME: Theme = {
 	dark: false,
@@ -31,12 +35,12 @@ export {
 	ErrorBoundary,
 } from "expo-router";
 
-// Prevent the splash screen from auto-hiding before getting the color scheme.
-SplashScreen.preventAutoHideAsync();
-
 export default function RootLayout() {
 	const { colorScheme, setColorScheme, isDarkColorScheme } = useColorScheme();
 	const [isColorSchemeLoaded, setIsColorSchemeLoaded] = React.useState(false);
+	const [loaded, error] = useFonts({
+		Lexend: require("../assets/fonts/Lexend.ttf"),
+	});
 
 	React.useEffect(() => {
 		(async () => {
@@ -60,9 +64,11 @@ export default function RootLayout() {
 			setAndroidNavigationBar(colorTheme);
 			setIsColorSchemeLoaded(true);
 		})().finally(() => {
-			SplashScreen.hideAsync();
+			if (loaded || error) {
+				SplashScreen.hideAsync();
+			}
 		});
-	}, []);
+	}, [loaded, error, colorScheme, setColorScheme]);
 
 	if (!isColorSchemeLoaded) {
 		return null;
