@@ -123,6 +123,7 @@ export default function Screen() {
 								className="w-full"
 								label="Senha"
 								placeholder="Senha"
+								secureTextEntry
 								{...field}
 							/>
 						)}
@@ -156,7 +157,7 @@ export default function Screen() {
 								// @ts-ignore
 								style={{ width: "18px", height: "18.5px" }}
 							/>
-							<Text className="ml-2">Google</Text>
+							<Text className="ml-4">Google</Text>
 						</Button>
 						<Button variant="outline" className="flex-1">
 							<Image
@@ -170,7 +171,7 @@ export default function Screen() {
 								style={{ width: "16px", height: "19.8px", marginTop: "-3px" }}
 							/>
 
-							<Text className="ml-2">Apple</Text>
+							<Text className="ml-4">Apple</Text>
 						</Button>
 					</HStack>
 				</Box>
