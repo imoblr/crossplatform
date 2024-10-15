@@ -89,11 +89,11 @@ export default function Screen() {
 		<Center className="h-full w-full p-6">
 			<Center className="mb-8">
 				<ImoblrSymbol className="mb-4" />
-				<Text className="text-2xl text-slate-100">Bem-vindo de volta!</Text>
+				<Text className="text-2xl text-slate-100">Cadastre sua conta</Text>
 				<Text className="text-sm text-text-quaternary">
-					Ainda não tem uma conta?{" "}
-					<Link className="text-primary" href={{ pathname: "/cadastro" }}>
-						Crie uma agora
+					Já tem uma conta?{" "}
+					<Link className="text-primary" href={{ pathname: "/entrar" }}>
+						Clique aqui para entrar
 					</Link>
 				</Text>
 			</Center>
@@ -114,37 +114,10 @@ export default function Screen() {
 							/>
 						)}
 					/>
-
-					<FormField
-						control={form.control}
-						name="password"
-						render={({ field }) => (
-							<FormInput
-								className="w-full"
-								label="Senha"
-								placeholder="Senha"
-								secureTextEntry
-								{...field}
-							/>
-						)}
-					/>
-
-					<FormField
-						control={form.control}
-						name="tos"
-						render={({ field }) => (
-							<FormCheckbox
-								className="my-2"
-								// checked={placeType.value}
-								label="Continuar logado por 30 dias"
-								{...field}
-							/>
-						)}
-					/>
 					<Button className="w-full" size="lg" onPress={updateProgressValue}>
-						<Text className="bg-brand">Acessar minha conta</Text>
+						<Text className="bg-brand">Continuar com email</Text>
 					</Button>
-					<LabelSpacer label="Ou entrar com" />
+					<LabelSpacer label="Ou cadastre-se com" />
 					<HStack className="w-full">
 						<Button variant="outline" className="flex-1">
 							<Image
