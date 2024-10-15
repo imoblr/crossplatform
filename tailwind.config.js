@@ -110,6 +110,9 @@ module.exports = {
           'disabled': 'var(--color-text-disabled)',
           'placeholder': 'var(--color-text-placeholder)',
           'placeholder_subtle': 'var(--color-text-placeholder_subtle)',
+          'error': 'var(--color-text-error)',
+          'warning': 'var(--color-text-warning)',
+          'success': 'var(--color-text-success)', 
         },
         // Shadow colors
         '--color-shadow': 'rgba(10,13,18,0.05)',

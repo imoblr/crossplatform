@@ -21,7 +21,7 @@ import { AnimatePresence, View } from "moti";
 
 const formSchema = z.object({
 	email: z.string().email({
-		message: "Please enter a valid email address.",
+		message: "O endereço de email precisa ser válido.",
 	}),
 	password: z.string().min(8, {
 		message: "Password must be at least 8 characters.",
@@ -97,6 +97,10 @@ export default function Screen() {
 			tos: false,
 		},
 	});
+
+	function onSubmit(values: z.infer<typeof formSchema>) {
+		console.log("Submitted!", JSON.stringify(values, null, 2));
+	}
 
 	const EmailStep = () => {
 		return (
@@ -179,9 +183,7 @@ export default function Screen() {
 								<Button
 									className="w-full"
 									size="lg"
-									onPress={() => {
-										setSignUpStep(2);
-									}}
+									onPress={form.handleSubmit(onSubmit)}
 								>
 									<Text className="bg-brand">Continuar com email</Text>
 								</Button>

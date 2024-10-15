@@ -112,7 +112,7 @@ const FormLabel = React.forwardRef<
 	return (
 		<Label
 			ref={ref}
-			className={cn("", error && "text-destructive", className)}
+			className={cn("", error && "text-text-error", className)}
 			nativeID={formItemNativeID}
 			{...props}
 		/>
@@ -154,7 +154,7 @@ const FormMessage = React.forwardRef<
 			exiting={FadeOut.duration(275)}
 			ref={ref}
 			nativeID={formMessageNativeID}
-			className={cn("font-medium text-destructive text-sm", className)}
+			className={cn("font-medium text-sm text-text-error", className)}
 			{...props}
 		>
 			{body}

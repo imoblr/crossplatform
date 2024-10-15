@@ -1,6 +1,7 @@
 const Color = require('color');
 import { vars } from "nativewind";
 import { slate, brand as brandColor, gray } from "../colors";
+import { error } from "../colors/error";
 
 export const brand = {
   'light': vars({
@@ -65,6 +66,7 @@ export const brand = {
     '--color-text-disabled': gray['500'],
     '--color-text-placeholder': gray['500'],
     '--color-text-placeholder_subtle': gray['300'],
+    '--color-text-error': error['600'],
     // -----------------------------------------------------------------------------
     // 
     // UTIL COLORS
