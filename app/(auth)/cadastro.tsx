@@ -12,7 +12,7 @@ import {
 } from "@/components/ui";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useForm } from "react-hook-form";
+import { useForm, type UseFormReturn } from "react-hook-form";
 import { ImoblrSymbol } from "@/components/ImoblrSymbol";
 import { Link } from "expo-router";
 import { Image } from "react-native";
@@ -26,107 +26,45 @@ const formSchema = z.object({
 	password: z.string().min(8, {
 		message: "Password must be at least 8 characters.",
 	}),
-	about: z.string().min(1, {
-		message: "We need to know.",
-	}),
-	accountType: z.enum(["staff", "admin", "owner"]),
-	framework: z.object(
-		{ value: z.string(), label: z.string() },
-		{
-			invalid_type_error: "Please select a framework.",
-		},
-	),
-	favoriteEmail: z.object(
-		{ value: z.string(), label: z.string() },
-		{
-			invalid_type_error: "Please select a favorite email.",
-		},
-	),
-	enableNotifications: z.boolean(),
-	dob: z
-		.string()
-		.min(1, { message: "Please enter your date of birth" })
-		.refine(
-			(dob) => {
-				const currentDate = new Date();
-				const year = currentDate.getFullYear();
-				const month = String(currentDate.getMonth() + 1).padStart(2, "0");
-				const day = String(currentDate.getDate()).padStart(2, "0");
-				const today = `${year}-${month}-${day}`;
-				return new Date(today).getTime() !== new Date(dob).getTime();
-			},
-			{
-				message: "You cannot be born today.",
-			},
-		),
-	tos: z.boolean().refine((value) => value, {
-		message: "You must accept the terms & conditions",
-	}),
 });
 
-function Shape({ bg }: { bg: string }) {
-	return (
-		<View
-			from={{
-				opacity: 0,
-				scale: 0.5,
-			}}
-			animate={{
-				opacity: 1,
-				scale: 1,
-			}}
-			exit={{
-				opacity: 0,
-				scale: 0.9,
-			}}
-			style={[styles.shape, { backgroundColor: bg }]}
-		/>
-	);
-}
+type FormWithInputs = z.infer<typeof formSchema>;
+type FieldName = keyof FormWithInputs;
+
+const signUpSteps = [
+	{
+		fields: ["email"],
+	},
+	{
+		fields: ["password"],
+	},
+];
 
 export default function Screen() {
-	const [signUpStep, setSignUpStep] = React.useState(1);
 	const { colorScheme } = useColorScheme();
-	const form = useForm<z.infer<typeof formSchema>>({
+	const [signUpStep, setSignUpStep] = React.useState(1);
+	const form = useForm<FormWithInputs>({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
 			email: "",
 			password: "",
-			about: "",
-			enableNotifications: false,
-			tos: false,
 		},
 	});
 
-	function onSubmit(values: z.infer<typeof formSchema>) {
-		console.log("Submitted!", JSON.stringify(values, null, 2));
+	const continueToPassword = async () => {
+		const fields = signUpSteps[0].fields;
+		const output = await form.trigger(fields as FieldName[], {
+			shouldFocus: true,
+		});
+
+		if (!output) return;
+
+		setSignUpStep(2);
+	};
+
+	function onSubmit(values: FormWithInputs) {
+		setSignUpStep(2);
 	}
-
-	const EmailStep = () => {
-		return (
-			<View className="flex-1 flex-col items-center justify-center">
-				<Text className="font-bold text-2xl">Sign Up</Text>
-			</View>
-		);
-	};
-
-	const PasswordStep = () => {
-		return (
-			<View className="flex-1 flex-col items-center justify-center">
-				<Text className="font-bold text-2xl">Sign Up</Text>
-			</View>
-		);
-	};
-
-	const SuccessStep = () => {
-		return (
-			<View className="flex-1 flex-col items-center justify-center">
-				<Text className="font-bold text-2xl">Sign Up</Text>
-			</View>
-		);
-	};
-
-	const signUpSteps = [EmailStep, PasswordStep, SuccessStep];
 
 	return (
 		<Center className="h-full w-full p-6">
@@ -183,7 +121,7 @@ export default function Screen() {
 								<Button
 									className="w-full"
 									size="lg"
-									onPress={form.handleSubmit(onSubmit)}
+									onPress={continueToPassword}
 								>
 									<Text className="bg-brand">Continuar com email</Text>
 								</Button>
@@ -225,6 +163,7 @@ export default function Screen() {
 						</Form>
 					</View>
 				)}
+				{/* form.handleSubmit(onSubmit) */}
 				{signUpStep === 2 && (
 					<View
 						from={{
