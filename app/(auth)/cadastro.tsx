@@ -159,11 +159,20 @@ export default function Screen() {
 										<Text className="ml-4">Apple</Text>
 									</Button>
 								</HStack>
+								<Text className="px-8 text-center text-sm text-text-quaternary">
+									Ao se cadastrar você concorda com os nossos &nbsp;
+									<Link
+										className="text-primary"
+										href={{ pathname: "/termos-de-uso" }}
+									>
+										Termos de Uso
+									</Link>
+									.
+								</Text>
 							</Box>
 						</Form>
 					</View>
 				)}
-				{/* form.handleSubmit(onSubmit) */}
 				{signUpStep === 2 && (
 					<View
 						from={{
