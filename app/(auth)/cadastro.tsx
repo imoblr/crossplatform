@@ -12,7 +12,7 @@ import {
 } from "@/components/ui";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useForm, type UseFormReturn } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { ImoblrSymbol } from "@/components/ImoblrSymbol";
 import { Link } from "expo-router";
 import { Image } from "react-native";
@@ -24,7 +24,7 @@ const formSchema = z.object({
 		message: "O endereço de email precisa ser válido.",
 	}),
 	password: z.string().min(8, {
-		message: "Password must be at least 8 characters.",
+		message: "Sua senha precisa ter no mínimo 8 caracteres.",
 	}),
 });
 
@@ -63,7 +63,7 @@ export default function Screen() {
 	};
 
 	function onSubmit(values: FormWithInputs) {
-		setSignUpStep(2);
+		setSignUpStep(3);
 	}
 
 	return (
@@ -231,14 +231,42 @@ export default function Screen() {
 								<Button
 									className="w-full"
 									size="lg"
-									onPress={() => {
-										setSignUpStep(1);
-									}}
+									onPress={form.handleSubmit(onSubmit)}
 								>
 									<Text className="bg-brand">Criar minha conta</Text>
 								</Button>
 							</Box>
 						</Form>
+					</View>
+				)}
+				{signUpStep === 3 && (
+					<View
+						from={{
+							opacity: 0,
+							scale: 0.9,
+						}}
+						animate={{
+							opacity: 1,
+							scale: 1,
+						}}
+						exit={{
+							opacity: 0,
+							scale: 0.9,
+						}}
+						exitTransition={{
+							type: "timing",
+							duration: 300,
+						}}
+						className="flex h-full w-full items-center justify-center"
+						key="sign-up-step-3"
+					>
+						<Center className="mb-8">
+							<Text className="text-2xl text-slate-100">Defina sua senha</Text>
+							<Text className="text-sm text-text-quaternary">
+								Defina uma senha segura para sua conta.
+							</Text>
+						</Center>
+						osdfokskfos
 					</View>
 				)}
 			</AnimatePresence>
