@@ -19,6 +19,7 @@ import { ImoblrSymbol } from "@/components/ImoblrSymbol";
 import { Link } from "expo-router";
 import { Image } from "react-native";
 import { useColorScheme } from "nativewind";
+import { AnimatePresence, View } from "moti";
 
 const GITHUB_AVATAR_URI =
 	"https://i.pinimg.com/originals/ef/a2/8d/efa28d18a04e7fa40ed49eeb0ab660db.jpg";
@@ -86,96 +87,117 @@ export default function Screen() {
 		setProgress(Math.floor(Math.random() * 100));
 	}
 	return (
-		<Center className="h-full w-full p-6">
-			<Center className="mb-8">
-				<ImoblrSymbol className="mb-4" />
-				<Text className="text-2xl text-slate-100">Bem-vindo de volta!</Text>
-				<Text className="text-sm text-text-quaternary">
-					Ainda não tem uma conta?{" "}
-					<Link className="text-primary" href={{ pathname: "/cadastro" }}>
-						Crie uma agora
-					</Link>
-				</Text>
-			</Center>
+		<AnimatePresence exitBeforeEnter>
+			<View
+				from={{
+					opacity: 0,
+					scale: 0.9,
+				}}
+				animate={{
+					opacity: 1,
+					scale: 1,
+				}}
+				exit={{
+					opacity: 0,
+					scale: 0.9,
+				}}
+				exitTransition={{
+					type: "timing",
+					duration: 300,
+				}}
+				className="flex h-full w-full items-center justify-center"
+				key="login-screen"
+			>
+				<Center className="mb-8">
+					<ImoblrSymbol className="mb-4" />
+					<Text className="text-2xl text-slate-100">Bem-vindo de volta!</Text>
+					<Text className="text-sm text-text-quaternary">
+						Ainda não tem uma conta?{" "}
+						<Link className="text-primary" href={{ pathname: "/cadastro" }}>
+							Crie uma agora
+						</Link>
+					</Text>
+				</Center>
 
-			{/* <ThemeToggle /> */}
-			<Form {...form}>
-				<Box className="w-full max-w-[360px] space-y-4">
-					<FormField
-						control={form.control}
-						name="email"
-						render={({ field }) => (
-							<FormInput
-								className="w-full"
-								autoFocus
-								label="Email"
-								placeholder="Email"
-								{...field}
-							/>
-						)}
-					/>
+				{/* <ThemeToggle /> */}
+				<Form {...form}>
+					<Box className="w-full max-w-[360px] space-y-4">
+						<FormField
+							control={form.control}
+							name="email"
+							render={({ field }) => (
+								<FormInput
+									className="w-full"
+									autoFocus
+									label="Email"
+									placeholder="Email"
+									{...field}
+								/>
+							)}
+						/>
 
-					<FormField
-						control={form.control}
-						name="password"
-						render={({ field }) => (
-							<FormInput
-								className="w-full"
-								label="Senha"
-								placeholder="Senha"
-								secureTextEntry
-								{...field}
-							/>
-						)}
-					/>
+						<FormField
+							control={form.control}
+							name="password"
+							render={({ field }) => (
+								<FormInput
+									className="w-full"
+									label="Senha"
+									placeholder="Senha"
+									secureTextEntry
+									{...field}
+								/>
+							)}
+						/>
 
-					<FormField
-						control={form.control}
-						name="tos"
-						render={({ field }) => (
-							<FormCheckbox
-								className="my-2"
-								// checked={placeType.value}
-								label="Continuar logado por 30 dias"
-								{...field}
-							/>
-						)}
-					/>
-					<Button className="w-full" size="lg" onPress={updateProgressValue}>
-						<Text className="bg-brand">Acessar minha conta</Text>
-					</Button>
-					<LabelSpacer label="Ou entrar com" />
-					<HStack className="w-full">
-						<Button variant="outline" className="flex-1">
-							<Image
-								source={
-									colorScheme === "light"
-										? require("@/assets/logos/google-logo.svg")
-										: require("@/assets/logos/google-logo.svg")
-								}
-								alt="imoblr miniature logo"
-								// @ts-ignore
-								style={{ width: "18px", height: "18.5px" }}
-							/>
-							<Text className="ml-4">Google</Text>
+						<FormField
+							control={form.control}
+							name="tos"
+							render={({ field }) => (
+								<FormCheckbox
+									className="my-2"
+									// checked={placeType.value}
+									label="Continuar logado por 30 dias"
+									{...field}
+								/>
+							)}
+						/>
+						<Button className="w-full" size="lg" onPress={updateProgressValue}>
+							<Text className="bg-brand">Acessar minha conta</Text>
 						</Button>
-						<Button variant="outline" className="flex-1">
-							<Image
-								source={
-									colorScheme === "light"
-										? require("@/assets/logos/apple-logo.svg")
-										: require("@/assets/logos/apple-logo.svg")
-								}
-								alt="imoblr miniature logo"
-								// @ts-ignore
-								style={{ width: "16px", height: "19.8px", marginTop: "-3px" }}
-							/>
+						<LabelSpacer label="Ou entrar com" />
+						<HStack className="w-full">
+							<Button variant="outline" className="flex-1">
+								<Image
+									source={
+										colorScheme === "light"
+											? require("@/assets/logos/google-logo.svg")
+											: require("@/assets/logos/google-logo.svg")
+									}
+									alt="imoblr miniature logo"
+									// @ts-ignore
+									style={{ width: "18px", height: "18.5px" }}
+								/>
+								<Text className="ml-4">Google</Text>
+							</Button>
+							<Button variant="outline" className="flex-1">
+								<Image
+									source={
+										colorScheme === "light"
+											? require("@/assets/logos/apple-logo.svg")
+											: require("@/assets/logos/apple-logo.svg")
+									}
+									alt="imoblr miniature logo"
+									// @ts-ignore
+									style={{ width: "16px", height: "19.8px", marginTop: "-3px" }}
+								/>
 
-							<Text className="ml-4">Apple</Text>
-						</Button>
-					</HStack>
-				</Box>
-			</Form>
-		</Center>
+								<Text className="ml-4">Apple</Text>
+							</Button>
+						</HStack>
+					</Box>
+				</Form>
+			</View>
+		</AnimatePresence>
 	);
 }

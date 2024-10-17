@@ -10,6 +10,9 @@ import {
 	FormInput,
 	HStack,
 	LabelSpacer,
+	Tooltip,
+	TooltipContent,
+	TooltipTrigger,
 } from "@/components/ui";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -19,6 +22,7 @@ import { Link } from "expo-router";
 import { Image } from "react-native";
 import { useColorScheme } from "nativewind";
 import { AnimatePresence, View } from "moti";
+import { Info } from "lucide-react-native";
 
 const formSchema = z.object({
 	email: z.string().email({
@@ -106,6 +110,18 @@ export default function Screen() {
 							<Text className="text-2xl text-slate-100">
 								Cadastre sua conta
 							</Text>
+							<Tooltip delayDuration={150}>
+								<TooltipTrigger className="px-2 pb-0.5 active:opacity-50">
+									<Info
+										size={14}
+										strokeWidth={2.5}
+										className="h-4 w-4 text-foreground/70"
+									/>
+								</TooltipTrigger>
+								<TooltipContent>
+									<Text className="native:text-lg">Freelanfdfdsfsfsdfsce</Text>
+								</TooltipContent>
+							</Tooltip>
 							<Text className="text-sm text-text-quaternary">
 								Já tem uma conta?{" "}
 								<Link className="text-primary" href={{ pathname: "/entrar" }}>
@@ -304,13 +320,11 @@ export default function Screen() {
 								Criamos sua conta para você e agora você pode visualizar seu
 								painel. Clique no botão abaixo para continuar.
 							</Text>
-							<Button
-								className="mt-8 w-full"
-								size="lg"
-								onPress={continueToPassword}
-							>
-								<Text className="bg-brand">Visualizar meu painel</Text>
-							</Button>
+							<Link href="/" asChild>
+								<Button className="mt-8 w-full" size="lg">
+									<Text className="bg-brand">Visualizar meu painel</Text>
+								</Button>
+							</Link>
 						</Center>
 					</View>
 				)}
