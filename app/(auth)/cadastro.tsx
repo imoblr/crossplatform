@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Button } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
+import LottieView from "lottie-react-native";
 import {
 	Box,
 	Center,
@@ -41,6 +42,7 @@ const signUpSteps = [
 ];
 
 export default function Screen() {
+	const animationRef = React.useRef<LottieView>(null);
 	const { colorScheme } = useColorScheme();
 	const [signUpStep, setSignUpStep] = React.useState(1);
 	const form = useForm<FormWithInputs>({
@@ -50,6 +52,14 @@ export default function Screen() {
 			password: "",
 		},
 	});
+
+	React.useEffect(() => {
+		if (signUpStep === 3) {
+			setTimeout(() => {
+				animationRef.current?.play();
+			}, 750);
+		}
+	}, [signUpStep]);
 
 	const continueToPassword = async () => {
 		const fields = signUpSteps[0].fields;
@@ -63,6 +73,7 @@ export default function Screen() {
 	};
 
 	function onSubmit(values: FormWithInputs) {
+		console.log("onSubmit", values);
 		setSignUpStep(3);
 	}
 
@@ -114,6 +125,11 @@ export default function Screen() {
 											autoFocus
 											label="Email"
 											placeholder="Email"
+											onKeyPress={(e) => {
+												if (e.nativeEvent.key === "Enter") {
+													continueToPassword();
+												}
+											}}
 											{...field}
 										/>
 									)}
@@ -213,6 +229,11 @@ export default function Screen() {
 											label="Escolha uma senha"
 											placeholder="Escolha uma senha"
 											{...field}
+											onKeyPress={(e) => {
+												if (e.nativeEvent.key === "Enter") {
+													form.handleSubmit(onSubmit)();
+												}
+											}}
 										/>
 									)}
 								/>
@@ -224,6 +245,11 @@ export default function Screen() {
 											className="w-full"
 											label="Repita sua senha"
 											placeholder="Repita sua senha"
+											onKeyPress={(e) => {
+												if (e.nativeEvent.key === "Enter") {
+													form.handleSubmit(onSubmit)();
+												}
+											}}
 											{...field}
 										/>
 									)}
@@ -260,13 +286,32 @@ export default function Screen() {
 						className="flex h-full w-full items-center justify-center"
 						key="sign-up-step-3"
 					>
-						<Center className="mb-8">
-							<Text className="text-2xl text-slate-100">Defina sua senha</Text>
-							<Text className="text-sm text-text-quaternary">
-								Defina uma senha segura para sua conta.
+						<Center className="mb-8 h-full w-full max-w-[360px]">
+							<Box className="mb-2 w-[75%]">
+								<LottieView
+									source={require("@/assets/animations/success-animation.json")}
+									style={{ width: "100%", height: "100%" }}
+									ref={animationRef}
+									autoPlay={false}
+									loop={false}
+								/>
+							</Box>
+
+							<Text className="text-2xl text-slate-100">
+								Sua conta foi criada!
 							</Text>
+							<Text className="text-center text-sm text-text-quaternary">
+								Criamos sua conta para você e agora você pode visualizar seu
+								painel. Clique no botão abaixo para continuar.
+							</Text>
+							<Button
+								className="mt-8 w-full"
+								size="lg"
+								onPress={continueToPassword}
+							>
+								<Text className="bg-brand">Visualizar meu painel</Text>
+							</Button>
 						</Center>
-						osdfokskfos
 					</View>
 				)}
 			</AnimatePresence>
