@@ -9,7 +9,8 @@ export const AppThemesProvider = (props: {
 }) => {
 	const { colorScheme } = useColorScheme();
 
-	const themeStyle: ViewStyle = themes[props.name][colorScheme || "light"];
+	const themeStyle: ViewStyle = themes[props.name].light;
+	// const themeStyle: ViewStyle = themes[props.name][colorScheme || "light"];
 
-	return <View style={{ flex: 1, ...themeStyle }}>{props.children}</View>;
+	return <View style={[{ flex: 1 }, themeStyle]}>{props.children}</View>;
 };

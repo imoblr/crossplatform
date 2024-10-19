@@ -47,8 +47,8 @@ const ImoblrSymbol = forwardRef<
 			<Image
 				source={
 					colorScheme === "light"
-						? require("@/assets/logos/imoblr-symbol-light-background.svg")
-						: require("@/assets/logos/imoblr-symbol-dark-background.svg")
+						? require("@/assets/logos/imoblr-symbol-dark-background.svg")
+						: require("@/assets/logos/imoblr-symbol-light-background.svg")
 				}
 				alt="imoblr miniature logo"
 				style={{ width: "100%", height: "100%" }}

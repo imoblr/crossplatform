@@ -107,9 +107,7 @@ export default function Screen() {
 					>
 						<Center className="mb-8">
 							<ImoblrSymbol className="mb-4" />
-							<Text className="text-2xl text-slate-100">
-								Cadastre sua conta
-							</Text>
+							<Text className="text-2xl text-gray-900">Cadastre sua conta</Text>
 							<Tooltip delayDuration={150}>
 								<TooltipTrigger className="px-2 pb-0.5 active:opacity-50">
 									<Info
@@ -227,7 +225,7 @@ export default function Screen() {
 						key="sign-up-step-2"
 					>
 						<Center className="mb-8">
-							<Text className="text-2xl text-slate-100">Defina sua senha</Text>
+							<Text className="text-2xl text-gray-100">Defina sua senha</Text>
 							<Text className="text-sm text-text-quaternary">
 								Defina uma senha segura para sua conta.
 							</Text>
@@ -313,7 +311,7 @@ export default function Screen() {
 								/>
 							</Box>
 
-							<Text className="text-2xl text-slate-100">
+							<Text className="text-2xl text-gray-100">
 								Sua conta foi criada!
 							</Text>
 							<Text className="text-center text-sm text-text-quaternary">
