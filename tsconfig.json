@@ -5,17 +5,12 @@
     "baseUrl": ".",
     "paths": {
       "@/*": [
-        "./*"
-      ],
-      "@components": [
-        "./components"
-      ],
-      "@components/*": [
-        "./components/*"
+        "*"
       ],
     }
   },
   "include": [
+    "custom.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",

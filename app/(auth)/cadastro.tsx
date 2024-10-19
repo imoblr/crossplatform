@@ -23,6 +23,7 @@ import { Image } from "react-native";
 import { useColorScheme } from "nativewind";
 import { AnimatePresence, View } from "moti";
 import { Info } from "lucide-react-native";
+import { ThemeToggle } from "@/components";
 
 const formSchema = z.object({
 	email: z.string().email({
@@ -61,6 +62,9 @@ export default function Screen() {
 		if (signUpStep === 3) {
 			setTimeout(() => {
 				animationRef.current?.play();
+				setTimeout(() => {
+					animationRef.current?.pause();
+				}, 2000);
 			}, 750);
 		}
 	}, [signUpStep]);
@@ -107,6 +111,7 @@ export default function Screen() {
 					>
 						<Center className="mb-8">
 							<ImoblrSymbol className="mb-4" />
+							<ThemeToggle />
 							<Text className="text-2xl text-gray-900">Cadastre sua conta</Text>
 							<Tooltip delayDuration={150}>
 								<TooltipTrigger className="px-2 pb-0.5 active:opacity-50">
@@ -225,7 +230,7 @@ export default function Screen() {
 						key="sign-up-step-2"
 					>
 						<Center className="mb-8">
-							<Text className="text-2xl text-gray-100">Defina sua senha</Text>
+							<Text className="text-2xl">Defina sua senha</Text>
 							<Text className="text-sm text-text-quaternary">
 								Defina uma senha segura para sua conta.
 							</Text>
@@ -311,9 +316,7 @@ export default function Screen() {
 								/>
 							</Box>
 
-							<Text className="text-2xl text-gray-100">
-								Sua conta foi criada!
-							</Text>
+							<Text className="text-2xl">Sua conta foi criada!</Text>
 							<Text className="text-center text-sm text-text-quaternary">
 								Criamos sua conta para você e agora você pode visualizar seu
 								painel. Clique no botão abaixo para continuar.
