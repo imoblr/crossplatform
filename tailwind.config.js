@@ -63,8 +63,7 @@ module.exports = {
         foreground: 'hsl(var(--foreground))',
         // - start - Primary colors
         primary: {
-          DEFAULT: 'var(--color-primary)',
-          foreground: colors.slate['1'],
+          DEFAULT: 'var(--color-primary)'
         },
         'primary-25': 'var(--color-primary-25)',
         'primary-50': 'var(--color-primary-50)',
