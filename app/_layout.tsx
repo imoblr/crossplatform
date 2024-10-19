@@ -1,6 +1,7 @@
 import "@/global.css";
+import "react-native-reanimated";
+import "react-native-gesture-handler";
 
-import { SessionProvider, useSession } from "@/context/SessionContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
 	type Theme,
@@ -79,10 +80,8 @@ export default function RootLayout() {
 			value={isDarkColorScheme ? DARK_THEME : LIGHT_THEME}
 		>
 			<AppThemesProvider name="brand">
-				<SessionProvider>
-					<Slot />
-					<PortalHost />
-				</SessionProvider>
+				<Slot />
+				<PortalHost />
 			</AppThemesProvider>
 		</ReactNativeThemeProvider>
 	);
